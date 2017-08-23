@@ -1,5 +1,4 @@
 #include "converter.h"
-
 Converter::Converter(){
     pound2kg=0.45359237;
     kg2pound=1/pound2kg;
@@ -10,14 +9,15 @@ Converter::Converter(){
 }
 
 float Converter::convertLb2Kg(float lb){
-    return lb*pound2kg;
+    float aux = lb*pound2kg;
+    return aux;
 }
 float Converter::convertKg2Lb(float kg){
 
     return kg*kg2pound;
 }
 float Converter::convertMi2Km(float mi){
-    return Mi*mile2km;
+    return mi*mile2km;
 }
 float Converter::convertKm2Mi(float km){
     return km*km2mile;

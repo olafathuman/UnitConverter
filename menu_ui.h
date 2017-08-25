@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'menu.ui'
+** Form generated from reading UI file 'menu_ui.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.7
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_MENU_H
-#define UI_MENU_H
+#ifndef UI_MENU_UI_H
+#define UI_MENU_UI_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -41,12 +41,14 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QLabel *label_2;
     QHBoxLayout *horizontalLayout_2;
-    QComboBox *comboBox;
+    QComboBox *typeBox;
+    QSpacerItem *horizontalSpacer_6;
+    QComboBox *fromBox;
     QSpacerItem *horizontalSpacer_3;
-    QComboBox *comboBox_2;
+    QComboBox *toBox;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_4;
-    QPushButton *pushButton;
+    QPushButton *exitbutton;
     QSpacerItem *horizontalSpacer_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -55,14 +57,19 @@ public:
     {
         if (Menu->objectName().isEmpty())
             Menu->setObjectName(QString::fromUtf8("Menu"));
-        Menu->resize(542, 600);
+        Menu->resize(380, 152);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Menu->sizePolicy().hasHeightForWidth());
+        Menu->setSizePolicy(sizePolicy);
         Menu->setMaximumSize(QSize(16777215, 600));
         centralwidget = new QWidget(Menu);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setMaximumSize(QSize(542, 551));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 541, 551));
+        verticalLayoutWidget->setGeometry(QRect(0, 0, 380, 101));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SetMaximumSize);
@@ -97,19 +104,28 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        comboBox = new QComboBox(verticalLayoutWidget);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        typeBox = new QComboBox(verticalLayoutWidget);
+        typeBox->setObjectName(QString::fromUtf8("typeBox"));
 
-        horizontalLayout_2->addWidget(comboBox);
+        horizontalLayout_2->addWidget(typeBox);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_6);
+
+        fromBox = new QComboBox(verticalLayoutWidget);
+        fromBox->setObjectName(QString::fromUtf8("fromBox"));
+
+        horizontalLayout_2->addWidget(fromBox);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_3);
 
-        comboBox_2 = new QComboBox(verticalLayoutWidget);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        toBox = new QComboBox(verticalLayoutWidget);
+        toBox->setObjectName(QString::fromUtf8("toBox"));
 
-        horizontalLayout_2->addWidget(comboBox_2);
+        horizontalLayout_2->addWidget(toBox);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -120,10 +136,10 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_4);
 
-        pushButton = new QPushButton(verticalLayoutWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        exitbutton = new QPushButton(verticalLayoutWidget);
+        exitbutton->setObjectName(QString::fromUtf8("exitbutton"));
 
-        horizontalLayout_3->addWidget(pushButton);
+        horizontalLayout_3->addWidget(exitbutton);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -135,7 +151,7 @@ public:
         Menu->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Menu);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 542, 27));
+        menubar->setGeometry(QRect(0, 0, 380, 27));
         Menu->setMenuBar(menubar);
         statusbar = new QStatusBar(Menu);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -151,7 +167,7 @@ public:
         Menu->setWindowTitle(QApplication::translate("Menu", "Unit Converter", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("Menu", "TextLabel", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("Menu", "TextLabel", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("Menu", "PushButton", 0, QApplication::UnicodeUTF8));
+        exitbutton->setText(QApplication::translate("Menu", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
@@ -162,4 +178,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_MENU_H
+#endif // UI_MENU_UI_H

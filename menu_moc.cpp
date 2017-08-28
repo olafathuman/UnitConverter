@@ -22,7 +22,7 @@ static const uint qt_meta_data_Menu[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,12 +31,14 @@ static const uint qt_meta_data_Menu[] = {
 
  // slots: signature, parameters, type, tag, flags
       12,    6,    5,    5, 0x0a,
+      36,   29,    5,    5, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Menu[] = {
-    "Menu\0\0index\0changedType(int)\0"
+    "Menu\0\0index\0changedType(int)\0string\0"
+    "editted(QString)\0"
 };
 
 void Menu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -46,6 +48,7 @@ void Menu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         Menu *_t = static_cast<Menu *>(_o);
         switch (_id) {
         case 0: _t->changedType((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 1: _t->editted((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -85,9 +88,9 @@ int Menu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

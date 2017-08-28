@@ -35,11 +35,11 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QLineEdit *lineEdit;
+    QLineEdit *inputLine;
     QSpacerItem *horizontalSpacer;
     QLabel *label;
     QSpacerItem *horizontalSpacer_2;
-    QLabel *label_2;
+    QLabel *resultLabel;
     QHBoxLayout *horizontalLayout_2;
     QComboBox *typeBox;
     QSpacerItem *horizontalSpacer_6;
@@ -76,10 +76,10 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        lineEdit = new QLineEdit(verticalLayoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        inputLine = new QLineEdit(verticalLayoutWidget);
+        inputLine->setObjectName(QString::fromUtf8("inputLine"));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(inputLine);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -94,10 +94,10 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        label_2 = new QLabel(verticalLayoutWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        resultLabel = new QLabel(verticalLayoutWidget);
+        resultLabel->setObjectName(QString::fromUtf8("resultLabel"));
 
-        horizontalLayout->addWidget(label_2);
+        horizontalLayout->addWidget(resultLabel);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -165,8 +165,9 @@ public:
     void retranslateUi(QMainWindow *Menu)
     {
         Menu->setWindowTitle(QApplication::translate("Menu", "Unit Converter", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("Menu", "TextLabel", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("Menu", "TextLabel", 0, QApplication::UnicodeUTF8));
+        inputLine->setText(QString());
+        label->setText(QApplication::translate("Menu", "=", 0, QApplication::UnicodeUTF8));
+        resultLabel->setText(QString());
         exitbutton->setText(QApplication::translate("Menu", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

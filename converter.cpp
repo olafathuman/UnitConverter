@@ -1,30 +1,54 @@
 #include "converter.h"
+#include <string>
+
 Converter::Converter(){
+    double I=1;
     pound2kg=0.45359237;
-    kg2pound=1/pound2kg;
+    kg2pound=I/pound2kg;
     mile2km=1.609344;
-    km2mile=1/mile2km;
+    km2mile=I/mile2km;
     inch2cm=2.54;
-    cm2inch=1/inch2cm;
+    cm2inch=I/inch2cm;
 }
 
-float Converter::convertLb2Kg(float lb){
-    float aux = lb*pound2kg;
+double Converter::convertLb2Kg(double lb){
+    double aux = lb*pound2kg;
     return aux;
 }
-float Converter::convertKg2Lb(float kg){
+double Converter::convertKg2Lb(double kg){
 
     return kg*kg2pound;
 }
-float Converter::convertMi2Km(float mi){
+double Converter::convertMi2Km(double mi){
     return mi*mile2km;
 }
-float Converter::convertKm2Mi(float km){
+double Converter::convertKm2Mi(double km){
     return km*km2mile;
 }
-float Converter::convertIn2Cm(float in){
+double Converter::convertIn2Cm(double in){
     return in*inch2cm;
 }
-float Converter::convertCm2In(float cm){
+double Converter::convertCm2In(double cm){
     return cm*cm2inch;
+}
+
+double Converter::convert(int index,std::string from, std::string to,double value){
+    if(from.compare(to)==0){
+        return value;
+    }
+    switch(index){
+        case 0:
+            if (from.compare("Kilograms")==0){
+                if(to.compare("Pounds")==0){
+                    return convertKg2Lb(value);
+                        }
+
+            }
+            else if(from.compare("Pounds")==0){
+                if(to.compare("Kilograms")==0){
+                    return convertLb2Kg(value);
+                }
+            }
+        }
+    return value;
 }

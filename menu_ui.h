@@ -32,7 +32,6 @@ class Ui_Menu
 {
 public:
     QWidget *centralwidget;
-    QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLineEdit *inputLine;
@@ -40,15 +39,17 @@ public:
     QLabel *label;
     QSpacerItem *horizontalSpacer_2;
     QLabel *resultLabel;
+    QSpacerItem *verticalSpacer_4;
     QHBoxLayout *horizontalLayout_2;
     QComboBox *typeBox;
     QSpacerItem *horizontalSpacer_6;
     QComboBox *fromBox;
     QSpacerItem *horizontalSpacer_3;
     QComboBox *toBox;
+    QSpacerItem *verticalSpacer_3;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_4;
-    QPushButton *exitbutton;
+    QPushButton *exitButton;
     QSpacerItem *horizontalSpacer_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -57,7 +58,7 @@ public:
     {
         if (Menu->objectName().isEmpty())
             Menu->setObjectName(QString::fromUtf8("Menu"));
-        Menu->resize(380, 152);
+        Menu->resize(483, 352);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -66,35 +67,37 @@ public:
         Menu->setMaximumSize(QSize(16777215, 600));
         centralwidget = new QWidget(Menu);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        centralwidget->setMaximumSize(QSize(542, 551));
-        verticalLayoutWidget = new QWidget(centralwidget);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 380, 101));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        centralwidget->setEnabled(true);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
+        centralwidget->setSizePolicy(sizePolicy1);
+        centralwidget->setMinimumSize(QSize(479, 303));
+        centralwidget->setMaximumSize(QSize(479, 303));
+        verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setSizeConstraint(QLayout::SetMaximumSize);
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        inputLine = new QLineEdit(verticalLayoutWidget);
+        inputLine = new QLineEdit(centralwidget);
         inputLine->setObjectName(QString::fromUtf8("inputLine"));
 
         horizontalLayout->addWidget(inputLine);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        label = new QLabel(verticalLayoutWidget);
+        label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         horizontalLayout->addWidget(label);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
-        resultLabel = new QLabel(verticalLayoutWidget);
+        resultLabel = new QLabel(centralwidget);
         resultLabel->setObjectName(QString::fromUtf8("resultLabel"));
 
         horizontalLayout->addWidget(resultLabel);
@@ -102,33 +105,46 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        verticalSpacer_4 = new QSpacerItem(20, 84, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_4);
+
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        typeBox = new QComboBox(verticalLayoutWidget);
+        typeBox = new QComboBox(centralwidget);
         typeBox->setObjectName(QString::fromUtf8("typeBox"));
 
         horizontalLayout_2->addWidget(typeBox);
 
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_6);
 
-        fromBox = new QComboBox(verticalLayoutWidget);
+        fromBox = new QComboBox(centralwidget);
         fromBox->setObjectName(QString::fromUtf8("fromBox"));
 
         horizontalLayout_2->addWidget(fromBox);
 
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_3);
 
-        toBox = new QComboBox(verticalLayoutWidget);
+        toBox = new QComboBox(centralwidget);
         toBox->setObjectName(QString::fromUtf8("toBox"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(toBox->sizePolicy().hasHeightForWidth());
+        toBox->setSizePolicy(sizePolicy2);
 
         horizontalLayout_2->addWidget(toBox);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_3);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -136,10 +152,10 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_4);
 
-        exitbutton = new QPushButton(verticalLayoutWidget);
-        exitbutton->setObjectName(QString::fromUtf8("exitbutton"));
+        exitButton = new QPushButton(centralwidget);
+        exitButton->setObjectName(QString::fromUtf8("exitButton"));
 
-        horizontalLayout_3->addWidget(exitbutton);
+        horizontalLayout_3->addWidget(exitButton);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -151,7 +167,7 @@ public:
         Menu->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Menu);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 380, 27));
+        menubar->setGeometry(QRect(0, 0, 483, 27));
         Menu->setMenuBar(menubar);
         statusbar = new QStatusBar(Menu);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -168,7 +184,7 @@ public:
         inputLine->setText(QString());
         label->setText(QApplication::translate("Menu", "=", 0, QApplication::UnicodeUTF8));
         resultLabel->setText(QString());
-        exitbutton->setText(QApplication::translate("Menu", "Exit", 0, QApplication::UnicodeUTF8));
+        exitButton->setText(QApplication::translate("Menu", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -19,6 +19,14 @@ class Converter{
         double convertKm2Mi(double km);
         double convertIn2Cm(double in);
         double convertCm2In(double cm);
+        double convertMi2Cm(double mi);
+        double convertMi2In(double mi);
+        double convertKm2Cm(double km);
+        double convertCm2Km(double cm);
+        double convertKm2In(double km);
+        double convertCm2Mi(double cm);
+        double convertIn2Km(double in);
+        double convertIn2Mi(double in);
         double convert(int index,std::string from, std::string to,double value);
 
 };

@@ -20,3 +20,8 @@ $./UnitConverter
 
 Running on Windows:
 -------------------
+I provide a Windows binary in the Windows.zip zip as to avoid having
+to compile in windows.
+
+To run the proogram, extract the Windows.zip and double click on
+UnitConverter.exe.

@@ -9,6 +9,8 @@ Converter::Converter(){
     km2mile=I/mile2km;
     inch2cm=2.54;
     cm2inch=I/inch2cm;
+    mph2kph=1.609344;
+    kph2mph=1/mph2kph;
 }
 
 double Converter::convertLb2Kg(double lb){
@@ -59,6 +61,24 @@ double Converter::convertIn2Km(double in){
 double Converter::convertIn2Mi(double in){
     return convertCm2Mi(convertIn2Cm(in));
 }
+double Converter::convertKph2Mph(double kph){
+    return kph*kph2mph;
+}
+double Converter::convertKph2Ms(double kph){
+    return ((kph*1000)/60)/60;
+}
+double Converter::convertMph2Kph(double mph){
+    return mph*mph2kph;
+}
+double Converter::convertMph2Ms(double mph){
+    return convertKph2Ms(convertMph2Kph(mph));
+}
+double Converter::convertMs2Kph(double ms){
+    return ((ms/1000)*60)*60;
+}
+double Converter::convertMs2Mph(double ms){
+    return convertKph2Mph(convertMs2Kph(ms));
+}
 
 
 double Converter::convert(int index,std::string from, std::string to,double value){
@@ -66,7 +86,7 @@ double Converter::convert(int index,std::string from, std::string to,double valu
         return value;
     }
     switch(index){
-        case 0:
+        case WEIGHT:
             if (from.compare("Kilograms")==0){
                 if(to.compare("Pounds")==0){
                     return convertKg2Lb(value);
@@ -79,7 +99,7 @@ double Converter::convert(int index,std::string from, std::string to,double valu
                 }
             }
             break;
-        case 1:
+        case DISTANCE:
             if(from.compare("Miles")==0){
                 if(to.compare("Kilometers")==0){
                     return convertMi2Km(value);
@@ -124,6 +144,32 @@ double Converter::convert(int index,std::string from, std::string to,double valu
                 }
                 else if(to.compare("Centimeters")==0){
                     return convertIn2Cm(value);
+                }
+            }
+            break;
+        case SPEED:
+            if (from.compare("km/h")==0){
+                if(to.compare("mi/h")==0){
+                    return convertKph2Mph(value);
+                }
+                else if(to.compare("m/s")==0){
+                    return convertKph2Ms(value);
+                }
+            }
+            else if(from.compare("mi/h")==0){
+                if(to.compare("km/h")==0){
+                    return convertMph2Kph(value);
+                }
+                else if(to.compare("m/s")==0){
+                    return convertMph2Ms(value);
+                }
+            }
+            else if(from.compare("m/s")==0){
+                if(to.compare("km/h")==0){
+                    return convertMs2Kph(value);
+                }
+                else if(to.compare("mi/h")==0){
+                    return convertMs2Mph(value);
                 }
             }
     }

@@ -2,7 +2,9 @@
 
 #ifndef CONVERTER_H
 #define CONVERTER_H
-
+#define WEIGHT 2
+#define SPEED 1
+#define DISTANCE 0
 
 class Converter{
     double pound2kg;
@@ -11,6 +13,8 @@ class Converter{
     double km2mile;
     double inch2cm;
     double cm2inch;
+    double kph2mph;
+    double mph2kph;
     public:
         Converter();
         double convertLb2Kg(double lb);
@@ -27,7 +31,12 @@ class Converter{
         double convertCm2Mi(double cm);
         double convertIn2Km(double in);
         double convertIn2Mi(double in);
+        double convertKph2Mph(double kph);
+        double convertKph2Ms(double kph);
+        double convertMph2Kph(double mph);
+        double convertMph2Ms(double mph);
+        double convertMs2Kph(double ms);
+        double convertMs2Mph(double ms);
         double convert(int index,std::string from, std::string to,double value);
-
 };
 #endif

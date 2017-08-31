@@ -22,17 +22,23 @@ void Menu::changedType(int index){
 void Menu::setupSelf(){
     this->statusBar()->setSizeGripEnabled(false);
     setFixedSize(size());
-    typeBox->addItem("Weight");
     typeBox->addItem("Distance");
+    typeBox->addItem("Speed");
+    typeBox->addItem("Weight");
     QStandardItemModel* current = new QStandardItemModel();
-    current->appendRow(new QStandardItem("Kilograms"));
-    current->appendRow(new QStandardItem("Pounds"));
-    list.append(current);
-    current = new QStandardItemModel();  
     current->appendRow(new QStandardItem("Miles"));
     current->appendRow(new QStandardItem("Kilometers"));
     current->appendRow(new QStandardItem("Centimeters"));
     current->appendRow(new QStandardItem("Inches"));
+    list.append(current);
+    current = new QStandardItemModel();
+    current->appendRow(new QStandardItem("km/h"));
+    current->appendRow(new QStandardItem("mi/h"));
+    current->appendRow(new QStandardItem("m/s"));
+    list.append(current);
+    current = new QStandardItemModel();  
+    current->appendRow(new QStandardItem("Kilograms"));
+    current->appendRow(new QStandardItem("Pounds"));
     list.append(current);
     inputLine->setValidator(new QDoubleValidator());
     fromBox->setModel(list.value(0));

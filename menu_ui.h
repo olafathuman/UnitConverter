@@ -6,8 +6,8 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_MENU_UI_H
-#define UI_MENU_UI_H
+#ifndef MENU_UI_H
+#define MENU_UI_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>

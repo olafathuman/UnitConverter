@@ -1,6 +1,6 @@
 #include "converter.h"
 #include <string>
-
+#include "curler.h"
 Converter::Converter(){
     double I=1;
     pound2kg=0.45359237;

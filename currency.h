@@ -1,5 +1,7 @@
+#include <map>
+#include <vector>
 #ifndef CURRENCY_H
-#define CURENCY_H
+#define CURRENCY_H
 class CurrencyHandler{
     
     
@@ -15,11 +17,11 @@ class CurrencyHandler{
         double getFromRate(std::string str);
         std::string getDate();
         std::vector<std::string> listify(std::string str);
-        std::vector<std::string>cleanList(std::vector<string> ls);
+        std::vector<std::string>cleanList(std::vector<std::string> ls);
         void fillMap(std::vector<std::string> ls);
         void update();
 
-}
+};
 
 
 #endif

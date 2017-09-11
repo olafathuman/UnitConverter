@@ -1,11 +1,11 @@
 #include <string>
-
+#include <currency.h>
 #ifndef CONVERTER_H
 #define CONVERTER_H
 #define WEIGHT 2
 #define SPEED 1
 #define DISTANCE 0
-
+#define CURRENCY 3
 class Converter{
     double pound2kg;
     double kg2pound;
@@ -15,6 +15,7 @@ class Converter{
     double cm2inch;
     double kph2mph;
     double mph2kph;
+    CurrencyHandler currency; 
     public:
         Converter();
         double convertLb2Kg(double lb);
@@ -37,6 +38,11 @@ class Converter{
         double convertMph2Ms(double mph);
         double convertMs2Kph(double ms);
         double convertMs2Mph(double ms);
+        double fromEur(std::string coin, double value);
+        double toEur(std::string coin, double value);
+        void updateCurrency();
+        void readCurrency();
+        std::string getDate();
         double convert(int index,std::string from, std::string to,double value);
 };
 #endif

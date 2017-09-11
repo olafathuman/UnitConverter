@@ -6,9 +6,11 @@
 #include <sstream>
 #include <string>
 #include "moc_menu.cpp"
+#include "dialog.h"
 #ifndef MENU_CPP
 #define MENU_CPP
 Menu::Menu(){
+    
     setupUi(this);
     setupSelf(); 
 }
@@ -78,6 +80,20 @@ double Menu::getInputDouble(){
 
 void Menu::quitIt(){
     close();
+}
+
+void checkCurrency(){
+    dial = new Dialog();
+    connect(dial,SIGNAL(accepted()),this,currencyAccept());
+    connect(dial,SIGNAL(rejected()),this,currencyReject());  
+}
+
+void currencyAccept(){
+    converter.updateCurrency();
+    dial.close();   
+}
+void currencyReject(){
+    
 }
 
 #endif

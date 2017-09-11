@@ -1,6 +1,9 @@
 #include "converter.h"
+#include "currency.h"
 #include <string>
 #include "curler.h"
+#include <QStandardItem>
+#include <QStandardItemModel>
 Converter::Converter(){
     double I=1;
     pound2kg=0.45359237;
@@ -172,7 +175,29 @@ double Converter::convert(int index,std::string from, std::string to,double valu
                     return convertMs2Mph(value);
                 }
             }
+            break;
+        case CURRENCY:
+            if(from.compare("EUR")==0){
+                
+            }
     }
 
     return value;
+}
+
+double Converter::fromEur(std::string coin, double value){
+    return value*currency.getFromRate(coin);
+}
+double Converter::toEur(std::string coin, double value){
+    return value*currency.getToRate(coin);
+}
+
+void Converter::updateCurrency(){
+   currency.update(); 
+}
+/*void readCurrency(){
+
+}*/
+std::string Converter::getDate(){
+    currency.getDate();
 }

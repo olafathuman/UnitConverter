@@ -44,8 +44,9 @@ class Converter{
         void updateCurrency();
         void readCurrency();
         std::string getDate();
-        double convert(int index,std::string from, std::string to,double value);
+        double convert(std::string type,std::string from, std::string to,double value);
         QStandardItemModel* getUnits();
+        void printAll();
 };
 
 #endif

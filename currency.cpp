@@ -9,6 +9,8 @@
 #include <QStandardItem>
 #include <QStandardItemModel>
 #include <QString>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 CurrencyHandler::CurrencyHandler(){
     path="./CurrencyRates";
@@ -86,37 +88,52 @@ void CurrencyHandler::fillMap( vector<string> ls){
     vector<string>::iterator it;
     size_t pos;
     string::size_type st;
-    for(vector<string>::const_iterator it=ls.begin();it<ls.end();it++,i++){
+    for(vector<string>::const_iterator it=ls.begin()+2;it<ls.end();it++,i++){
+    
         string str =*it;
+        if(i==0){
+            str=str.substr(9,str.length());
+        }
         string semicolon = ":";
+        string test = start;
         pos=str.find(semicolon);
-        start=str.substr(0,pos);
+        start=str.substr(1,pos-2);
+
         end=str.erase(0,pos+semicolon.length());
-        if(i!=0){
-            rate= stod(end,&st);
-            fromEurRates[start]=rate;
-            toEurRates[start]=one/rate;
+        replace(end.begin(),end.end(),'.',',');
+        rate= stod(end,&st);
+        fromEurRates[start]=rate;
+        toEurRates[start]=one/rate;
         }
 
-    }
+    
 }
 
 void CurrencyHandler::update(){
-    Curler Curl = Curler();
-    string str= Curl.getStuff(url);
+    string str= Curler::getStuff(&url);
 
     vector<string> list;
     list = listify(str);
-    fillMap(list); 
+    set=1; 
+    fillMap(list);
 }
 
 QStandardItemModel* CurrencyHandler::getUnits(){
     QStandardItemModel* qsim = new QStandardItemModel();
-    qsim->appendRow(new QStandardItem("EUR"));
     QString st;
     for(map<std::string,double>::iterator it = toEurRates.begin(); it!= toEurRates.end(); it++){
         st = QString::fromStdString(it->first);
         qsim->appendRow(new QStandardItem(st));
+        if(it->first.compare("DKK")==0){
+            qsim->appendRow(new QStandardItem("EUR"));
+        }
     }
     return qsim;
+}
+
+void CurrencyHandler::printAll(){
+        for(std::map<std::string,double>::iterator it=fromEurRates.begin();it!=fromEurRates.end();it++){
+        std::cout << (std::string)it->first << std::endl;
+        std::cout << fromEurRates[it->first]<< std::endl;
+    }
 }

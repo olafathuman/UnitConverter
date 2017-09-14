@@ -22,6 +22,7 @@ class CurrencyHandler{
         void fillMap(std::vector<std::string> ls);
         void update();
         QStandardItemModel* getUnits();
+        void printAll();
 };
 
 

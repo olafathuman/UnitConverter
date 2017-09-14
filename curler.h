@@ -1,12 +1,33 @@
 #include <string>
-
+#include <curl/curl.h>
+#include <iostream>
 #ifndef CURLER_H
 #define CURLER_H
 
 
 class Curler{
     public:
+    static size_t WriteCallback(char *wd, size_t size, size_t nmemb, std::string *stream){
+        size_t actualSize = size*nmemb;
+        stream->append(wd,actualSize);
+        return 0;
+    }
+static std::string getStuff(std::string *url){
+    using namespace std;
+    CURL *curl;
+    CURLcode res;
+    string readBuffer;
+    long useget;
+    curl = curl_easy_init();
+    url->append("stuff");
+    curl_easy_setopt(curl, CURLOPT_URL,"http://api.fixer.io/latest");
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+    curl_easy_setopt(curl, CURLOPT_HTTPGET,useget);
+    res = curl_easy_perform(curl);
+    curl_easy_cleanup(curl);
 
-    std::string getStuff(std::string url);
+    return readBuffer;
+}
 };
 #endif

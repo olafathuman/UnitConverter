@@ -4,6 +4,7 @@
 #include "curler.h"
 #include <QStandardItem>
 #include <QStandardItemModel>
+#include <iostream>
 Converter::Converter(){
     double I=1;
     pound2kg=0.45359237;
@@ -84,12 +85,11 @@ double Converter::convertMs2Mph(double ms){
 }
 
 
-double Converter::convert(int index,std::string from, std::string to,double value){
+double Converter::convert(std::string type,std::string from, std::string to,double value){
     if(from.compare(to)==0){
         return value;
     }
-    switch(index){
-        case WEIGHT:
+    if(type.compare("Weight")==0){
             if (from.compare("Kilograms")==0){
                 if(to.compare("Pounds")==0){
                     return convertKg2Lb(value);
@@ -101,8 +101,8 @@ double Converter::convert(int index,std::string from, std::string to,double valu
                     return convertLb2Kg(value);
                 }
             }
-            break;
-        case DISTANCE:
+    }
+    else if(type.compare("Distance")==0){
             if(from.compare("Miles")==0){
                 if(to.compare("Kilometers")==0){
                     return convertMi2Km(value);
@@ -115,6 +115,7 @@ double Converter::convert(int index,std::string from, std::string to,double valu
                 }
 
             }
+
             else if(from.compare("Kilometers")==0){
                 if(to.compare("Miles")==0){
                     return convertKm2Mi(value);
@@ -149,8 +150,8 @@ double Converter::convert(int index,std::string from, std::string to,double valu
                     return convertIn2Cm(value);
                 }
             }
-            break;
-        case SPEED:
+    }
+    else if(type.compare("Speed")==0){
             if (from.compare("km/h")==0){
                 if(to.compare("mi/h")==0){
                     return convertKph2Mph(value);
@@ -175,17 +176,25 @@ double Converter::convert(int index,std::string from, std::string to,double valu
                     return convertMs2Mph(value);
                 }
             }
-            break;
-        case CURRENCY:
-            if(from.compare("EUR")==0){
-                
+    }
+    else if(type.compare("Currency")==0){
+        std::cout << from << "," << to << std::endl;
+        if(from.compare("EUR")==0){
+            return fromEur(to,value);        
             }
+        else if(to.compare("EUR")==0){
+            return toEur(from,value);
+        }
+        else{
+            return fromEur(to,toEur(from,value));
+        }
     }
 
     return value;
 }
 
 double Converter::fromEur(std::string coin, double value){
+    std::cout << value << "," << coin << "," << currency.getFromRate(coin)<<std::endl;
     return value*currency.getFromRate(coin);
 }
 double Converter::toEur(std::string coin, double value){
@@ -204,4 +213,9 @@ std::string Converter::getDate(){
 
 QStandardItemModel* Converter::getUnits(){
    return currency.getUnits();
+}
+
+void Converter::printAll(){
+    currency.printAll();
+
 }

@@ -54,7 +54,7 @@ void Menu::setupSelf(){
 }
 void Menu::editted(QString string){
     double input = string.toDouble();
-    double result = converter.convert(typeBox->currentIndex(),fromBoxText(),toBoxText(),input);
+    double result = converter.convert(typeBox->currentText().toUtf8().constData(),fromBoxText(),toBoxText(),input);
     std::ostringstream s;
     s << result;
     resultLabel->setText(QString::fromStdString(s.str()));
@@ -62,7 +62,7 @@ void Menu::editted(QString string){
 
 void Menu::update(){
     double input = getInputDouble(); 
-    double result = converter.convert(typeBox->currentIndex(),fromBoxText(),toBoxText(),input);
+    double result = converter.convert(typeBox->currentText().toUtf8().constData(),fromBoxText(),toBoxText(),input);
     std::ostringstream s;
     s << result;
     resultLabel->setText(QString::fromStdString(s.str()));
@@ -93,8 +93,9 @@ void Menu::currencyAccept(){
     converter.updateCurrency();
     dial->close();
     typeBox->addItem("Currency");
-    list.append(converter.getUnits());
     
+    list.append(converter.getUnits());
+    converter.printAll();
 }
 void Menu::currencyReject(){
    dial->close ();

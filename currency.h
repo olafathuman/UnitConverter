@@ -1,5 +1,6 @@
 #include <map>
 #include <vector>
+#include <QStandardItemModel>
 #ifndef CURRENCY_H
 #define CURRENCY_H
 class CurrencyHandler{
@@ -20,7 +21,7 @@ class CurrencyHandler{
         std::vector<std::string>cleanList(std::vector<std::string> ls);
         void fillMap(std::vector<std::string> ls);
         void update();
-
+        QStandardItemModel* getUnits();
 };
 
 

@@ -1,5 +1,6 @@
 #include <string>
 #include <currency.h>
+#include <QStandardItemModel>
 #ifndef CONVERTER_H
 #define CONVERTER_H
 #define WEIGHT 2
@@ -44,5 +45,7 @@ class Converter{
         void readCurrency();
         std::string getDate();
         double convert(int index,std::string from, std::string to,double value);
+        QStandardItemModel* getUnits();
 };
+
 #endif

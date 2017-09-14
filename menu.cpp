@@ -50,6 +50,7 @@ void Menu::setupSelf(){
     connect(fromBox,SIGNAL(activated(int)),static_cast<Menu*>(this),SLOT(update()));
     connect(toBox,SIGNAL(activated(int)),static_cast<Menu*>(this),SLOT(update()));
     connect(exitButton,SIGNAL(released()),static_cast<Menu*>(this),SLOT(quitIt()));
+    checkCurrency();
 }
 void Menu::editted(QString string){
     double input = string.toDouble();
@@ -82,18 +83,21 @@ void Menu::quitIt(){
     close();
 }
 
-void checkCurrency(){
+void Menu::checkCurrency(){
     dial = new Dialog();
-    connect(dial,SIGNAL(accepted()),this,currencyAccept());
-    connect(dial,SIGNAL(rejected()),this,currencyReject());  
+    connect(dial,SIGNAL(accepted()),this,SLOT(currencyAccept()));
+    connect(dial,SIGNAL(rejected()),this,SLOT(currencyReject())); 
 }
 
-void currencyAccept(){
+void Menu::currencyAccept(){
     converter.updateCurrency();
-    dial.close();   
-}
-void currencyReject(){
+    dial->close();
+    typeBox->addItem("Currency");
+    list.append(converter.getUnits());
     
+}
+void Menu::currencyReject(){
+   dial->close ();
 }
 
 #endif

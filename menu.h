@@ -3,13 +3,14 @@
 #include "converter.h"
 #include <QList>
 #include <QStandardItemModel>
+#include "dialog.h"
 #ifndef MENU_H
 #define MENU_H
 class Menu: public QMainWindow, public Ui_Menu{
     Q_OBJECT 
     Converter converter;
     QList<QStandardItemModel*> list; 
-    Dialog dial;
+    Dialog *dial;
 
     public:
     Menu();

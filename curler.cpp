@@ -1,14 +1,13 @@
 #include "curler.h"
 #include <string>
 #include <curl/curl.h>
-#include <iostream>
 
 static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp){
     ((std::string*)userp)->append((char*)contents, size * nmemb);
     return size * nmemb;
 }
 
-std::string get(std::string url){
+std::string Curler::getStuff(std::string url){
     CURL *curl;
     CURLcode res;
     std::string readBuffer;

@@ -199,5 +199,9 @@ void Converter::updateCurrency(){
 
 }*/
 std::string Converter::getDate(){
-    currency.getDate();
+    return currency.getDate();
+}
+
+QStandardItemModel* Converter::getUnits(){
+   return currency.getUnits();
 }

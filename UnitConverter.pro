@@ -6,13 +6,12 @@ TEMPLATE = app
 TARGET = 
 DEPENDPATH += .
 INCLUDEPATH += .
-
+LIBS += -lcurl
 # Input
 HEADERS += converter.h curler.h currency.h dialog.h dialog_ui.h menu.h menu_ui.h
 FORMS += dialog_ui.ui menu_ui.ui
 SOURCES += converter.cpp \
            curler.cpp \
-           curlTest.cpp \
            currency.cpp \
            dialog.cpp \
            main.cpp \

@@ -1,3 +1,5 @@
+#ifndef MAIN_H
+#define MAIN_H
 #include <iostream>
 #include <QApplication>
 #include "menu.h"
@@ -10,3 +12,4 @@ int main(int argc,char **argv){
 
 
 }
+#endif

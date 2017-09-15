@@ -178,7 +178,6 @@ double Converter::convert(std::string type,std::string from, std::string to,doub
             }
     }
     else if(type.compare("Currency")==0){
-        std::cout << from << "," << to << std::endl;
         if(from.compare("EUR")==0){
             return fromEur(to,value);        
             }
@@ -194,7 +193,6 @@ double Converter::convert(std::string type,std::string from, std::string to,doub
 }
 
 double Converter::fromEur(std::string coin, double value){
-    std::cout << value << "," << coin << "," << currency.getFromRate(coin)<<std::endl;
     return value*currency.getFromRate(coin);
 }
 double Converter::toEur(std::string coin, double value){
@@ -215,7 +213,4 @@ QStandardItemModel* Converter::getUnits(){
    return currency.getUnits();
 }
 
-void Converter::printAll(){
-    currency.printAll();
 
-}

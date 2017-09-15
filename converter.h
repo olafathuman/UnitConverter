@@ -46,7 +46,6 @@ class Converter{
         std::string getDate();
         double convert(std::string type,std::string from, std::string to,double value);
         QStandardItemModel* getUnits();
-        void printAll();
 };
 
 #endif

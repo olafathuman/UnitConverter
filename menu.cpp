@@ -95,7 +95,6 @@ void Menu::currencyAccept(){
     typeBox->addItem("Currency");
     
     list.append(converter.getUnits());
-    converter.printAll();
 }
 void Menu::currencyReject(){
    dial->close ();

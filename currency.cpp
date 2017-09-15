@@ -14,7 +14,6 @@
 using namespace std;
 CurrencyHandler::CurrencyHandler(){
     path="./CurrencyRates";
-    url="http://api.fixer.io/latest";
 }
 
 double CurrencyHandler::getToRate(string str){
@@ -110,7 +109,7 @@ void CurrencyHandler::fillMap( vector<string> ls){
 }
 
 void CurrencyHandler::update(){
-    string str= Curler::getStuff(&url);
+    string str= Curler::getStuff();
 
     vector<string> list;
     list = listify(str);
@@ -129,11 +128,4 @@ QStandardItemModel* CurrencyHandler::getUnits(){
         }
     }
     return qsim;
-}
-
-void CurrencyHandler::printAll(){
-        for(std::map<std::string,double>::iterator it=fromEurRates.begin();it!=fromEurRates.end();it++){
-        std::cout << (std::string)it->first << std::endl;
-        std::cout << fromEurRates[it->first]<< std::endl;
-    }
 }

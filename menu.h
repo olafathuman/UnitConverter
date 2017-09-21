@@ -11,6 +11,7 @@ class Menu: public QMainWindow, public Ui_Menu{
     Converter converter;
     QList<QStandardItemModel*> list; 
     Dialog *dial;
+    std::string sPath;
 
     public:
     Menu();
@@ -27,6 +28,7 @@ class Menu: public QMainWindow, public Ui_Menu{
     void quitIt();
     void currencyAccept();
     void currencyReject();
+    void writeToFile(std::string path);
 };
 
 #endif

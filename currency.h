@@ -9,6 +9,7 @@ class CurrencyHandler{
     std::map<std::string,double> toEurRates;
     std::map<std::string,double> fromEurRates;
     std::string path;
+    std::string url;
     std::string date;
     bool set=false;
     public:
@@ -21,6 +22,9 @@ class CurrencyHandler{
         void fillMap(std::vector<std::string> ls);
         void update();
         QStandardItemModel* getUnits();
+        void printAll();
+        void writeToFile(std::string path);
+        void setDate(std::string d);
 };
 
 

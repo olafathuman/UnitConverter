@@ -213,4 +213,6 @@ QStandardItemModel* Converter::getUnits(){
    return currency.getUnits();
 }
 
-
+void Converter::writeToFile(std::string path){
+    currency.writeToFile(path);
+}

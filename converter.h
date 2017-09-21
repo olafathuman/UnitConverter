@@ -3,10 +3,6 @@
 #include <QStandardItemModel>
 #ifndef CONVERTER_H
 #define CONVERTER_H
-#define WEIGHT 2
-#define SPEED 1
-#define DISTANCE 0
-#define CURRENCY 3
 class Converter{
     double pound2kg;
     double kg2pound;
@@ -46,6 +42,7 @@ class Converter{
         std::string getDate();
         double convert(std::string type,std::string from, std::string to,double value);
         QStandardItemModel* getUnits();
+        void writeToFile(std::string path);
 };
 
 #endif

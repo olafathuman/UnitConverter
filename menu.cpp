@@ -10,7 +10,7 @@
 #ifndef MENU_CPP
 #define MENU_CPP
 Menu::Menu(){
-    
+    sPath="CurrentRates.txt";
     setupUi(this);
     setupSelf(); 
 }
@@ -85,6 +85,10 @@ void Menu::quitIt(){
 
 void Menu::checkCurrency(){
     dial = new Dialog();
+    std::string str = converter.getDate();
+    if(str.compare("ERROR")!=0){
+        dial->setDate(str);
+    }
     connect(dial,SIGNAL(accepted()),this,SLOT(currencyAccept()));
     connect(dial,SIGNAL(rejected()),this,SLOT(currencyReject())); 
 }
@@ -95,9 +99,13 @@ void Menu::currencyAccept(){
     typeBox->addItem("Currency");
     
     list.append(converter.getUnits());
+    writeToFile(sPath);
 }
 void Menu::currencyReject(){
    dial->close ();
 }
 
+void Menu::writeToFile(std::string path){
+    converter.writeToFile(path);
+}
 #endif

@@ -8,7 +8,7 @@ DEPENDPATH += .
 INCLUDEPATH += .
 LIBS += -lcurl
 # Input
-HEADERS += converter.h curler.h currency.h dialog.h dialog_ui.h menu.h menu_ui.h
+HEADERS += converter.h curler.h currency.h dialog.h menu.h
 FORMS += dialog_ui.ui menu_ui.ui
 SOURCES += converter.cpp \
            currency.cpp \

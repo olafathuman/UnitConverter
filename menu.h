@@ -20,6 +20,7 @@ class Menu: public QMainWindow, public Ui_Menu{
     std::string fromBoxText();
     std::string toBoxText();
     void checkCurrency();
+    void writeToFile(std::string path);
     public slots:
 
     void changedType(int index);
@@ -28,7 +29,7 @@ class Menu: public QMainWindow, public Ui_Menu{
     void quitIt();
     void currencyAccept();
     void currencyReject();
-    void writeToFile(std::string path);
+    void currencyRead();
 };
 
 #endif

@@ -9,11 +9,10 @@
 #include <QStandardItem>
 #include <QStandardItemModel>
 #include <QString>
-#include <iostream>
 #include <algorithm>
 using namespace std;
 CurrencyHandler::CurrencyHandler(){
-    path="CurrencyRates.txt";
+    sPath="CurrentRates.txt";
     date="ERROR";
 }
 
@@ -23,7 +22,6 @@ double CurrencyHandler::getToRate(string str){
     }
     return 0; 
 }
-
 double CurrencyHandler::getFromRate(string str){
     if(set){
         return fromEurRates[str];
@@ -32,21 +30,17 @@ double CurrencyHandler::getFromRate(string str){
 }
 
  string CurrencyHandler::getDate(){
-     string st;
-     string error = "ERROR";
-     cout << date << endl;
-    cout << error << endl;
-    if(date.compare(error)!=0){
-        cout << "eh?" << endl;
-        return date;
-    }
+    return date;
+}
 
-    ifstream myfile(path);
-    if (myfile.is_open()){
+ string CurrencyHandler::getDateFromFile(string path){
+    ifstream myfile;
+    myfile.open(path);
+    string st;
+    if(myfile.is_open()){
         getline(myfile,st);
         myfile.close();
-        string semicolon=":";
-        return st.erase(0,st.find(semicolon)+semicolon.length());
+        return st.erase(0,5);
     }
     return "ERROR";
 }
@@ -105,7 +99,6 @@ void CurrencyHandler::fillMap( vector<string> ls){
         string str =*it;
         
       if(i==0){
-            cout << str;
             pos=str.find(semicolon);
             str=str.erase(0,pos+semicolon.length());
             str = str.substr(1,str.length()-2);
@@ -136,6 +129,7 @@ void CurrencyHandler::update(){
     list = listify(str);
     set=1; 
     fillMap(list);
+
 }
 
 QStandardItemModel* CurrencyHandler::getUnits(){
@@ -160,6 +154,37 @@ void CurrencyHandler::writeToFile(string path){
         }
         myfile.close();
     } 
+}
+
+void CurrencyHandler::readFromFile(string path){
+    ifstream myfile;
+    myfile.open(path);
+    size_t pos;
+    string str;
+    string unit;
+    string::size_type st;
+    double value;
+    double one = 1;
+    string delimiter = ":";
+    if (myfile.is_open()){
+        getline(myfile,str);
+        pos = str.find(delimiter);
+        str=str.erase(0,pos);
+        setDate(str);
+        set=1;
+        while(getline(myfile,str)){
+            pos = str.find(delimiter);
+            unit=str.substr(0,pos);
+            str=str.erase(0,pos+1);
+            replace(str.begin(),str.end(),'.',',');
+            value=stod(str,&st);
+            fromEurRates[unit]=value;
+            toEurRates[unit]=one/value;
+
+
+
+        }
+    }
 }
 
 void CurrencyHandler::setDate(string d){

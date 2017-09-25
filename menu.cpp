@@ -85,17 +85,20 @@ void Menu::quitIt(){
 
 void Menu::checkCurrency(){
     dial = new Dialog();
-    std::string str = converter.getDate();
-    if(str.compare("ERROR")!=0){
+    std::string str = converter.getDateFromFile(sPath);
+    if(str.compare("ERROR") != 0){
         dial->setDate(str);
+        connect(dial,SIGNAL(rejected()),this,SLOT(currencyRead())); 
+    }
+    else{
+        connect(dial,SIGNAL(rejected()),this,SLOT(currencyReject())); 
     }
     connect(dial,SIGNAL(accepted()),this,SLOT(currencyAccept()));
-    connect(dial,SIGNAL(rejected()),this,SLOT(currencyReject())); 
 }
 
 void Menu::currencyAccept(){
-    converter.updateCurrency();
     dial->close();
+    converter.updateCurrency();
     typeBox->addItem("Currency");
     
     list.append(converter.getUnits());
@@ -103,6 +106,13 @@ void Menu::currencyAccept(){
 }
 void Menu::currencyReject(){
    dial->close ();
+}
+
+void Menu::currencyRead(){
+    dial->close();
+    converter.readFromFile(sPath);
+    typeBox->addItem("Currency");
+    list.append(converter.getUnits());
 }
 
 void Menu::writeToFile(std::string path){

@@ -209,10 +209,19 @@ std::string Converter::getDate(){
     return currency.getDate();
 }
 
+std::string Converter::getDateFromFile(std::string path){
+    return currency.getDateFromFile(path);
+}
+
 QStandardItemModel* Converter::getUnits(){
    return currency.getUnits();
 }
 
 void Converter::writeToFile(std::string path){
     currency.writeToFile(path);
+}
+
+void Converter::readFromFile(std::string path){
+    currency.readFromFile(path);
+
 }

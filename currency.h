@@ -8,7 +8,7 @@ class CurrencyHandler{
     
     std::map<std::string,double> toEurRates;
     std::map<std::string,double> fromEurRates;
-    std::string path;
+    std::string sPath;
     std::string url;
     std::string date;
     bool set=false;
@@ -24,7 +24,9 @@ class CurrencyHandler{
         QStandardItemModel* getUnits();
         void printAll();
         void writeToFile(std::string path);
+        void readFromFile(std::string path);
         void setDate(std::string d);
+        std::string getDateFromFile(std::string path);
 };
 
 

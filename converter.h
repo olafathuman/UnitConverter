@@ -40,9 +40,11 @@ class Converter{
         void updateCurrency();
         void readCurrency();
         std::string getDate();
+        std::string getDateFromFile(std::string path);
         double convert(std::string type,std::string from, std::string to,double value);
         QStandardItemModel* getUnits();
         void writeToFile(std::string path);
+        void readFromFile(std::string path);
 };
 
 #endif

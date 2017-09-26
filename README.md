@@ -20,7 +20,7 @@ Then, compile
 
 Run it:
 
-"$./UnitConverter"
+"$ ./UnitConverter"
 
 Running on Windows:
 -------------------

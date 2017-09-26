@@ -1,4 +1,5 @@
 #include "menu.h"
+#include <QLocale>
 #include <QStandardItem>
 #include <QStandardItemModel>
 #include <QDoubleValidator>
@@ -10,6 +11,7 @@
 #ifndef MENU_CPP
 #define MENU_CPP
 Menu::Menu(){
+    QLocale::setDefault(QLocale::Portuguese);
     sPath="CurrentRates.txt";
     setupUi(this);
     setupSelf(); 

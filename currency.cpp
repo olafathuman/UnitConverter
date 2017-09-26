@@ -161,6 +161,7 @@ void CurrencyHandler::readFromFile(string path){
     myfile.open(path);
     size_t pos;
     string str;
+    QString qstr;
     string unit;
     string::size_type st;
     double value;
@@ -176,8 +177,8 @@ void CurrencyHandler::readFromFile(string path){
             pos = str.find(delimiter);
             unit=str.substr(0,pos);
             str=str.erase(0,pos+1);
-            replace(str.begin(),str.end(),'.',',');
-            value=stod(str,&st);
+            qstr = QString::fromStdString(str);
+            value=qstr.toDouble();
             fromEurRates[unit]=value;
             toEurRates[unit]=one/value;
 

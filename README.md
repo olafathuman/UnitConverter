@@ -24,7 +24,7 @@ Run it:
 
 Running on Windows:
 -------------------
-I provide a Windows binary in the Windows.zip zip as to avoid having
+I provide a Windows binary in the Windows.zip archive, as well as all the needed dlls as to avoid having
 to compile in windows.
 
 To run the program, extract the Windows.zip, change to the win32 folder and double click on

@@ -1,10 +1,12 @@
 # UnitConverter
 A simple unit converter made in C++.
-Allows for the conversion of units of Distance, Speed and Weight.
+Allows for the conversion of units of Distance, Speed Weight and Currency.
+The currency module needs to aquire currency data from the internet at least once to work.
+Currency data uses http://api.fixer.io/latest as a source.
 
 # Requirements:
 --------------
-Requires QT4, gcc and g++ to compile.
+Requires QT4, gcc and libcurl to compile.
 
 # Compiling on GNU/Linux:
 -----------------------

@@ -9,7 +9,6 @@
 #include <QStandardItem>
 #include <QStandardItemModel>
 #include <QString>
-#include <algorithm>
 using namespace std;
 CurrencyHandler::CurrencyHandler(){
     sPath="CurrentRates.txt";
@@ -93,7 +92,6 @@ void CurrencyHandler::fillMap( vector<string> ls){
     int i=0;
     vector<string>::iterator it;
     size_t pos;
-    string::size_type st;
     string semicolon = ":";
     for(vector<string>::const_iterator it=ls.begin()+1;it<ls.end();it++,i++){
         
@@ -164,7 +162,6 @@ void CurrencyHandler::readFromFile(string path){
     string str;
     QString qstr;
     string unit;
-    string::size_type st;
     double value;
     double one = 1;
     string delimiter = ":";

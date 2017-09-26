@@ -16,13 +16,13 @@ static std::string getStuff(){
     using namespace std;
     CURL *curl;
     string readBuffer;
-    long useget;
+
     curl = curl_easy_init();
     if(curl){
     curl_easy_setopt(curl, CURLOPT_URL,"http://api.fixer.io/latest");
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
-    curl_easy_setopt(curl, CURLOPT_HTTPGET,useget);
+    curl_easy_setopt(curl, CURLOPT_HTTPGET,new long);
     curl_easy_perform(curl);
     curl_easy_cleanup(curl);
     }

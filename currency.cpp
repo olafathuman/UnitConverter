@@ -89,6 +89,7 @@ void CurrencyHandler::fillMap( vector<string> ls){
     string end;
     double rate;
     double one=1;
+    QString  qstr;
     int i=0;
     vector<string>::iterator it;
     size_t pos;
@@ -113,8 +114,8 @@ void CurrencyHandler::fillMap( vector<string> ls){
             start=str.substr(1,pos-2);
 
             end=str.erase(0,pos+semicolon.length());
-            replace(end.begin(),end.end(),'.',',');
-            rate= stod(end,&st);
+            qstr = QString::fromStdString(end);
+            rate= qstr.toDouble();
             fromEurRates[start]=rate;
             toEurRates[start]=one/rate;
         }

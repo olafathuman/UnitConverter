@@ -3,6 +3,9 @@
 #include <QStandardItemModel>
 #ifndef CONVERTER_H
 #define CONVERTER_H
+//The Converter class.
+//This class handles all unit convertions presented in the program.
+
 class Converter{
     double pound2kg;
     double kg2pound;

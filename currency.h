@@ -3,6 +3,10 @@
 #include <QStandardItemModel>
 #ifndef CURRENCY_H
 #define CURRENCY_H
+//Here I define the currency module for the application.
+//The CurrencyHandle class handles everything in terms of currency unit 
+//conversion.
+
 class CurrencyHandler{
     
     

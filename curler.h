@@ -3,7 +3,8 @@
 #include <iostream>
 #ifndef CURLER_H
 #define CURLER_H
-
+//here i define a static class that is used to get currency data from 
+//api.fixer.io/latest .
 
 class Curler{
     public:

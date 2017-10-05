@@ -10,6 +10,9 @@
 #include "dialog.h"
 #ifndef MENU_CPP
 #define MENU_CPP
+
+//Constructor for the Menu class. sets the Local to one that handles string to
+//double and vice-versa the way i want it to.
 Menu::Menu(){
     QLocale::setDefault(QLocale::Portuguese);
     sPath="CurrentRates.txt";
@@ -22,10 +25,11 @@ void Menu::changedType(int index){
     toBox->setModel(list.value(index));
     update();
 }
-
+//Function that sets ups everything the menu needs.
 void Menu::setupSelf(){
     this->statusBar()->setSizeGripEnabled(false);
     setFixedSize(size());
+    
     typeBox->addItem("Distance");
     typeBox->addItem("Speed");
     typeBox->addItem("Weight");
@@ -54,6 +58,8 @@ void Menu::setupSelf(){
     connect(exitButton,SIGNAL(released()),static_cast<Menu*>(this),SLOT(quitIt()));
     checkCurrency();
 }
+
+//Function called when something is written in the input field.
 void Menu::editted(QString string){
     double input = string.toDouble();
     double result = converter.convert(typeBox->currentText().toUtf8().constData(),fromBoxText(),toBoxText(),input);
@@ -61,7 +67,7 @@ void Menu::editted(QString string){
     s << result;
     resultLabel->setText(QString::fromStdString(s.str()));
 }
-
+//Function called whenever the result needs to be updated.
 void Menu::update(){
     double input = getInputDouble(); 
     double result = converter.convert(typeBox->currentText().toUtf8().constData(),fromBoxText(),toBoxText(),input);
@@ -69,22 +75,26 @@ void Menu::update(){
     s << result;
     resultLabel->setText(QString::fromStdString(s.str()));
 }
+//Function that returns the item in the fromBox as a string.
 std::string Menu::fromBoxText(){
     return fromBox->currentText().toUtf8().constData();
 }
+//Function same asa above for toBox.
 std::string Menu::toBoxText(){
     return toBox->currentText().toUtf8().constData();
 }
 
+//Get value in the input field as a double.
 double Menu::getInputDouble(){
     QString string=inputLine->displayText();
     return string.toDouble();
 }
 
+//Function that closes the main window.
 void Menu::quitIt(){
     close();
 }
-
+//Function that opens up the dialog asking if we should download data or not.
 void Menu::checkCurrency(){
     dial = new Dialog();
     std::string str = converter.getDateFromFile(sPath);
@@ -97,7 +107,7 @@ void Menu::checkCurrency(){
     }
     connect(dial,SIGNAL(accepted()),this,SLOT(currencyAccept()));
 }
-
+//Function that is called if we click yes on the dialog.
 void Menu::currencyAccept(){
     dial->close();
     converter.updateCurrency();
@@ -106,17 +116,18 @@ void Menu::currencyAccept(){
     list.append(converter.getUnits());
     writeToFile(sPath);
 }
+//Function that is called if no is pressed on the dialog without a data file.
 void Menu::currencyReject(){
    dial->close ();
 }
-
+//Function that is called if no is pressed on the dialog with a data file.
 void Menu::currencyRead(){
     dial->close();
     converter.readFromFile(sPath);
     typeBox->addItem("Currency");
     list.append(converter.getUnits());
 }
-
+//Function that writes currency data to a file.
 void Menu::writeToFile(std::string path){
     converter.writeToFile(path);
 }

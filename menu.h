@@ -6,6 +6,11 @@
 #include "dialog.h"
 #ifndef MENU_H
 #define MENU_H
+//Class that implemennts the Ui_Menu. The Ui_Menu is the form I made for the
+//the interface. This class handles all the interactions with said interface and
+//contains the necessary class (Converter) to handle the unit convertions as 
+//well.
+
 class Menu: public QMainWindow, public Ui_Menu{
     Q_OBJECT 
     Converter converter;
